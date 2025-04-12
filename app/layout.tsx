@@ -1,11 +1,10 @@
 import './globals.css'
 import Link from 'next/link'
 import StarBackground from '@/components/StarBackground'
-import { Html } from 'next/document'
 import { cn } from "@/lib/utils" // shadcn/uiに含まれるユーティリティ（クラス結合）
 
 export const metadata = {
-  title: "Yuuki's Portfolio",
+  title: "Yuuk1 Portfolio",
   description: 'ポートフォリオサイト',
 }
 
@@ -37,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
 
         <footer className="relative z-10 text-center text-sm text-white/70 py-6 border-t border-white/10">
-          © 2025 Yuuk1's Portfolio. All rights reserved.
+          © 2025 Yuuk1 Portfolio. All rights reserved.
         </footer>
       </body>
     </html>
