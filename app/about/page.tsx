@@ -88,7 +88,7 @@ export default function AboutPage() {
                         <ul className="list-disc list-inside">
                             <li>フロントエンド: React, Next.js, Vite</li>
                             <li>バックエンド: Node.js, Flask, Django</li>
-                            <li>データベース: MongoDB, PostgreSQL</li>
+                            <li>データベース: MongoDB, PostgreSQL, MySQL</li>
                             <li>デザイン: TailwindCss, shadcn/ui, Bootstrap</li>
                             <li>CI/CD: GitHub Actions, Docker(基礎程度)</li>
                             <li>機械学習: TensorFlow, PyTorch</li>
