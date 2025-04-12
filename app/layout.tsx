@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </nav>
         </header>
 
-        {/* 🔽 メインコンテンツ */}
+        {/* メインコンテンツ */}
         <main className="relative z-10 container mx-auto px-4 py-8">
           {children}
         </main>

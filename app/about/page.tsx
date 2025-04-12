@@ -46,7 +46,7 @@ export default function AboutPage() {
                                 </p>
                                 <p>
                                     <strong>趣味：</strong>
-                                    ゲーム・美食探求🍚・筋トレ💪
+                                    ゲーム🎮・美食探求🍚・筋トレ💪
                                 </p>
                             </CardContent>
                         </div>
@@ -66,7 +66,7 @@ export default function AboutPage() {
                                 { name: "CSS", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" },
                                 { name: "JavaScript", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
                                 { name: "TypeScript", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
-                                { name: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+                                { name: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
                                 { name: "Java", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
                                 {
                                     name: "C", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"

@@ -11,7 +11,7 @@ export default function Home() {
   const [showMessage, setShowMessage] = useState(false);
   const [typedText, setTypedText] = useState("");
 
-  const fullText = "ようこそ！僕の洗練されたポートフォリオへ! \n メニューバーからページを選んでください。";
+  const fullText = "ようこそ！僕の洗練されたポートフォリオへ! \n Menuからページを選んでください。";
 
   useEffect(() => {
     if (showMessage && typedText.length < fullText.length) {

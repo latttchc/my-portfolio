@@ -7,6 +7,22 @@ import Image from "next/image";
 
 const projects = [
     {
+        title: "マインドマップ",
+        description: "Viteを使ったマインドマップアプリ。React Flowを利用してノードを自由に配置。",
+        stack: ["TypeScript", "React", "Vite", "React Flow", "Tailwind CSS"],
+        github: "https://github.com/latttchc/orange-mindmap",
+        demo: "https://orange-mindmap.vercel.app/",
+        image: "/image/mindmap.png",
+    },
+    {
+        title: "簡単!!Todoアプリ",
+        description: "Supabaseを利用しReact + TypeScriptで作成したシンプルなTodoアプリ。タスクの追加・削除が可能。認証機能も実装。",
+        stack: ["Next.js", "React", "Supabase", " TypeScript", "Tailwind CSS"],
+        github: "https://github.com/latttchc/todo_list",
+        demo: "https://todo-list-welcome.vercel.app/",
+        image: "/image/todo-list.png",
+    },
+    {
         title: "画像生成AI ✖️ モネ風プロジェクト",
         description: "モネの絵画データセットを用いたスタイル変換の研究。CycleGANやStyleGANで再現性を追求。",
         stack: ["Python", "PyTorch", "TensorFlow", "画像生成"],
@@ -76,16 +92,16 @@ export default function ProjectsPage() {
                                 <div className="mb-4">
                                     {project.image ? (
                                         <a
-                                            href={project.demo || project.github}
+                                            href={project.demo}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="block hover:opacity-90 transition"
                                         >
                                             <Image
                                                 src={project.image}
-                                                alt={project.title}
-                                                width={800}
-                                                height={400}
+                                                alt=""
+                                                width={600}
+                                                height={300}
                                                 className="rounded-md border border-white/10 object-cover"
                                             />
                                         </a>
@@ -110,22 +126,38 @@ export default function ProjectsPage() {
 
                                 {/* GitHubリンク */}
                                 <div className="mt-4">
-                                    <a
-                                        href={project.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 text-sm font-medium text-blue-300 hover:underline"
-                                    >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="w-4 h-4"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
+                                    {project.demo ? (
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-1 text-sm font-medium text-blue-300 hover:underline"
                                         >
-                                            <path d="M12 .5C5.72.5.5 5.72.5 12c0 5.09 3.29 9.42 7.84 10.96.57.1.78-.25.78-.55v-2.04c-3.19.7-3.86-1.51-3.86-1.51-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.18 1.76 1.18 1.03 1.77 2.7 1.26 3.36.97.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.18a10.87 10.87 0 0 1 2.86-.39c.97 0 1.95.13 2.86.39 2.17-1.49 3.13-1.18 3.13-1.18.63 1.56.24 2.72.12 3.01.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.35.78 1.04.78 2.1v3.12c0 .31.2.66.79.55C20.71 21.41 24 17.09 24 12c0-6.28-5.22-11.5-12-11.5Z" />
-                                        </svg>
-                                        GitHub リポジトリ
-                                    </a>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                className="w-4 h-4"
+                                                fill="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M12 .5C5.72.5.5 5.72.5 12c0 5.09 3.29 9.42 7.84 10.96.57.1.78-.25.78-.55v-2.04c-3.19.7-3.86-1.51-3.86-1.51-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.18 1.76 1.18 1.03 1.77 2.7 1.26 3.36.97.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.18a10.87 10.87 0 0 1 2.86-.39c.97 0 1.95.13 2.86.39 2.17-1.49 3.13-1.18 3.13-1.18.63 1.56.24 2.72.12 3.01.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.35.78 1.04.78 2.1v3.12c0 .31.2.66.79.55C20.71 21.41 24 17.09 24 12c0-6.28-5.22-11.5-12-11.5Z" />
+                                            </svg>
+                                            GitHub リポジトリ
+                                        </a>
+
+                                    ) : (
+                                        <div className="flex items-center gap-1 text-sm font-medium text-gray-500">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                className="w-4 h-4"
+                                                fill="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M12 .5C5.72.5.5 5.72.5 12c0 5.09 3.29 9.42 7.84 10.96.57.1.78-.25.78-.55v-2.04c-3.19.7-3.86-1.51-3.86-1.51-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.71.08-.71 1.15.08 1.76 1.18 1.76 1.18 1.03 1.77 2.7 1.26 3.36.97.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.18a10.87 10.87 0 0 1 2.86-.39c.97 0 1.95.13 2.86.39 2.17-1.49 3.13-1.18 3.13-1.18.63 1.56.24 2.72.12 3.01.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.35.78 1.04.78 2.1v3.12c0 .31.2.66.79.55C20.71 21.41 24 17.09 24 12c0-6.28-5.22-11.5-12-11.5Z" />
+                                            </svg>
+                                            <p>GitHubも非公開です🙇</p>
+                                        </div>
+
+                                    )}
                                 </div>
                             </CardContent>
                         </Card>

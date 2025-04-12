@@ -14,7 +14,7 @@ export default function WavyText({ text }: { text: string }) {
                     transition={{
                         duration: 1.2,
                         repeat: Infinity,
-                        delay: i * 0.07, // ← 文字ごとにずらして波っぽく
+                        delay: i * 0.07, // 文字ごとにずらして波っぽく
                     }}
                 >
                     {char === " " ? "\u00A0" : char}
