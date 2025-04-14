@@ -6,6 +6,12 @@ import { cn } from "@/lib/utils" // shadcn/uiに含まれるユーティリテ�
 export const metadata = {
   title: "Yuuk1 Portfolio",
   description: 'ポートフォリオサイト',
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
