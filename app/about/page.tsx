@@ -67,6 +67,7 @@ export default function AboutPage() {
                                 { name: "JavaScript", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
                                 { name: "TypeScript", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
                                 { name: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+                                { name: "Ruby", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-original.svg" },
                                 { name: "Java", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
                                 {
                                     name: "C", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
@@ -87,7 +88,7 @@ export default function AboutPage() {
                     <CardContent className="p-0 space-y-4 text-sm leading-relaxed text-gray-700">
                         <ul className="list-disc list-inside">
                             <li>フロントエンド: React, Next.js, Vite</li>
-                            <li>バックエンド: Node.js, Flask, Django</li>
+                            <li>バックエンド: Node.js, Flask, Django, Rails</li>
                             <li>データベース: MongoDB, PostgreSQL, MySQL</li>
                             <li>デザイン: TailwindCss, shadcn/ui, Bootstrap</li>
                             <li>CI/CD: GitHub Actions, Docker(基礎程度)</li>
