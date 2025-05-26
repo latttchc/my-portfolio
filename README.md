@@ -1,4 +1,4 @@
-# My Portfolio - ポートフォリオサイト
+# Yuuk1's Portfolio - ポートフォリオサイト
 
 ## 🔗 サイトURL
 
