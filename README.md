@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Portfolio - 侑輝の開発ポートフォリオサイト
 
-## Getting Started
+## 🔗 サイトURL
 
-First, run the development server:
+[https://myportfolio-yuuk1.vercel.app/](https://myportfolio-yuuk1.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📌 概要
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+このポートフォリオサイトは、私の開発経験・研究活動・プロジェクト成果をまとめたものです。Web開発・AI研究・個人開発など幅広い技術スタックと成果物を紹介しています。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 🔧 技術スキルと使用技術の紹介
+- 💼 プロジェクト詳細とリンク付き成果物
+- 📄 簡易的な研究内容と自己紹介
+- 📬 問い合わせフォームによる連絡手段の提供
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠 技術スタック
 
-To learn more about Next.js, take a look at the following resources:
+| 分類            | 技術                                 |
+|-----------------|--------------------------------------|
+| フロントエンド   | Next.js / React / TypeScript         |
+| UI ライブラリ   | Tailwind CSS / Shadcn/ui             |
+| デプロイ         | Vercel                               |
+| 状態管理・Hooks | React Hooks / `useState`, `useEffect` 等 |
+| バンドル・構築   | Next.js (`app router`) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎯 主なセクション
 
-## Deploy on Vercel
+- `Home`: タイトルとportfolioの説明(PUSH MEを押すと文字が出現)
+- `About`: 自己紹介、スキルセット、学習経験
+- `Projects`: 個人開発・研究等のプロジェクト詳細(今後追加予定)
+- `Contact`: 連絡手段などを公開
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✨ このポートフォリオのこだわり
+
+- **シンプルかつ見る人を惹きつけるようなUI**：Tailwind CSSとshadcn/uiによるデザイン性
+- **プロジェクトへの導線重視**：各プロジェクトにGitHubやプロジェクトに遷移できるように掲載
+- **今後のスケーラビリティも想定**：簡単な技術記事など検討中
+
+---
+
+## 🗺 今後の課題（Roadmap）
+・型定義の追加
+・データの整形・整理
+・UI/UX・アクセシビリティの向上
+・更なるアニメーションの工夫
+・データとUIの分離
+・デプロイ方法の変更
+・セキュリティ面での改善
+
+---
+
+

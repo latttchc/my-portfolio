@@ -41,7 +41,7 @@ export default function AboutPage() {
 
                             <CardContent className="p-0 space-y-4 text-sm leading-relaxed text-gray-700">
                                 <p>
-                                    最近はモネ風の絵を再現する画像生成や、機械学習を活かした
+                                    最近はモネに注視する画像生成や、機械学習を活かした
                                     アート系プロジェクトにも取り組んでおり、技術と芸術の融合に挑戦！！！
                                 </p>
                                 <p>
