@@ -19,7 +19,7 @@
 
 | 分類            | 技術                                 |
 |-----------------|--------------------------------------|
-| フロントエンド   | Next.js (ver 15.3.0)(`app router`)/ React(ver 19) / TypeScript         |
+| フロントエンド   | Next.js (ver.15.3.0)(`app router`)/ React(ver.19.0.0) / TypeScript(ver.5)        |
 | UI ライブラリ   | Tailwind CSS / Shadcn/ui  / framer-motion / three.js           |
 | デプロイ         | Vercel                               |
 | 状態管理・Hooks | React Hooks / `useState`, `useEffect` 等 |
@@ -38,7 +38,7 @@
 
 - **シンプルなUI**:Tailwind CSSとshadcn/uiによるデザイン性
 - **見る人を惹きつけるようなデザイン**:Three.jsなどによるアニメーション追加
-- **技術スタックなどを見やすく**::about pageに全てまとめることで可読性意識
+- **技術スタックなどを見やすく**:about pageに全てまとめることで可読性意識
 - **プロジェクトへの導線重視**:各プロジェクトにGitHubやプロジェクトに遷移できるように掲載
 - **今後のスケーラビリティも想定**:簡単な技術記事など検討中
 
