@@ -1,19 +1,23 @@
-import './globals.css'
-import Link from 'next/link'
-import StarBackground from '@/components/StarBackground'
-import { cn } from "@/lib/utils" // shadcn/uiに含まれるユーティリティ（クラス結合）
+import "./globals.css";
+import Link from "next/link";
+import StarBackground from "@/components/StarBackground";
+import { cn } from "@/lib/utils"; // shadcn/uiに含まれるユーティリティ（クラス結合）
 
 export const metadata = {
   title: "Yuuk1 Portfolio",
-  description: 'ポートフォリオサイト',
+  description: "ポートフォリオサイト",
   icons: {
     shortcut: "/favicon-32x32.png",
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
-}
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ja">
       <body className="relative bg-black text-white">
@@ -48,7 +52,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   );
 }
 
-
 // 共通ナビリンク用コンポーネント
 function NavLink({ href, label }: { href: string; label: string }) {
   return (
@@ -56,11 +59,10 @@ function NavLink({ href, label }: { href: string; label: string }) {
       href={href}
       className={cn(
         "text-white hover:text-blue-400 transition-colors",
-        "px-3 py-2 rounded-md"
+        "px-3 py-2 rounded-md",
       )}
     >
       {label}
     </Link>
   );
 }
-
