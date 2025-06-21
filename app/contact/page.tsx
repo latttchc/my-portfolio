@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-import { Mail, Github, Twitter } from "lucide-react";
+import { Github, Twitter } from "lucide-react";
 import ContactItem from "@/components/ContactItem";
 import { Input } from "@/components/ui/input";
 import {
@@ -38,11 +38,6 @@ export default function ContactPage() {
       </p>
 
       <div className="flex flex-row items-center justify-center mx-auto gap-4 mt-6">
-        {/* <ContactItem
-          icon={<Mail className="w-5 h-5" />}
-          label="Mail"
-          href="yuki.oishi.rp18@gmail.com"
-        /> */}
         <Form {...form}>
           <form className="flex flex-col items-center mt-12">
             <FormField
