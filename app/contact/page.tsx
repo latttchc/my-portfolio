@@ -34,7 +34,7 @@ export default function ContactPage() {
     <div className="max-w-xl mx-auto px-4 py-10 space-y-6 text-white">
       <h1 className="text-3xl font-bold">Contact</h1>
       <p className="text-white/80">
-        お問い合わせ・ご連絡は以下のSNSまたはフォームからお願いします。
+        お問い合わせ・ご連絡は以下のフォームからお願いします。
       </p>
 
       <div className="flex flex-row items-center justify-center mx-auto gap-4 mt-6">
@@ -44,7 +44,7 @@ export default function ContactPage() {
           href="yuki.oishi.rp18@gmail.com"
         /> */}
         <Form {...form}>
-          <form className="flex flex-col items-center">
+          <form className="flex flex-col items-center mt-12">
             <FormField
               control={form.control}
               name="name"
@@ -118,7 +118,10 @@ export default function ContactPage() {
         </Form>
 
       </div>
-      <div className="flex flex-row items-center mx-auto gap-4 mt-6">
+      <p className="text-white/80 mt-24">
+        お問い合わせ・ご連絡は以下のフォームからお願いします。
+      </p>
+      <div className="flex flex-row items-center mx-auto gap-4">
         <ContactItem
           icon={<Github className="w-5 h-5" />}
           label="GitHub"
@@ -130,6 +133,6 @@ export default function ContactPage() {
           href="https://x.com/elif_lattt"
         />
       </div>
-    </div >
+    </div>
   );
 }
