@@ -25,10 +25,9 @@ export default function ContactPage() {
       email: "",
       name: "",
       phone: "",
-      text: ""
-    }
-  })
-
+      text: "",
+    },
+  });
 
   return (
     <div className="max-w-xl mx-auto px-4 py-10 space-y-6 text-white">
@@ -119,7 +118,6 @@ export default function ContactPage() {
             </Button>
           </form>
         </Form>
-
       </div>
       <p className="text-white/80 mt-12">
         以下からX(Twiter)・Githubにアクセスできます
