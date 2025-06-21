@@ -55,9 +55,11 @@ export default function ContactPage() {
                     <Input
                       className="w-84 bg-black"
                       type="name"
+                      placeholder="必須"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -71,9 +73,11 @@ export default function ContactPage() {
                     <Input
                       className="w-84 bg-black"
                       type="email"
+                      placeholder="必須"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -87,9 +91,11 @@ export default function ContactPage() {
                     <Input
                       className="w-84 bg-black"
                       type="tel"
+                      placeholder="任意"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -102,9 +108,11 @@ export default function ContactPage() {
                   <FormControl className="mb-3.5">
                     <Textarea
                       className="w-84 bg-black"
-                      placeholder=""
+                      placeholder="100文字まで入力できます"
+                      {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -118,8 +126,8 @@ export default function ContactPage() {
         </Form>
 
       </div>
-      <p className="text-white/80 mt-24">
-        お問い合わせ・ご連絡は以下のフォームからお願いします。
+      <p className="text-white/80 mt-12">
+        以下からX(Twiter)・Githubにアクセスできます
       </p>
       <div className="flex flex-row items-center mx-auto gap-4">
         <ContactItem
