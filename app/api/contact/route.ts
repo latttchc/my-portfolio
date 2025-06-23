@@ -26,8 +26,8 @@ export async function POST(req: NextRequest) {
       from: process.env.GMAILUSER, // 修正: 認証されたアドレスから送信
       to: process.env.GMAILUSER,
       replyTo: email, // 返信先を問い合わせ者に設定
-      subject: `[ポートフォリオ] お問い合わせ: ${name}様より`, // 修正: sugject → subject
-      text: `${text}\n\nSent from: ${email}`, // 修正: message → text
+      subject: `[ポートフォリオ] お問い合わせ: ${name}様より`,
+      text: `${text}\n\nSent from: ${email}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
@@ -57,12 +57,12 @@ export async function POST(req: NextRequest) {
           </div>
           <p style="color: #6c757d; font-size: 12px; margin-top: 20px;">
             送信日時: ${new Date().toLocaleString("ja-JP", {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      })}
           </p>
         </div>
       `,
