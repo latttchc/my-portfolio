@@ -9,7 +9,7 @@ export const formSchema = z.object({
   phone: z
     .string()
     .optional()
-    .refine((val) => !val || /^[0-9-+().\s]$/.test(val), {
+    .refine((val) => !val || /^[0-9-+().\s]+$/.test(val), {
       message: "有効な電話番号を入力してください",
     }),
   text: z
