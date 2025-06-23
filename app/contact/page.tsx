@@ -17,8 +17,12 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -29,6 +33,38 @@ export default function ContactPage() {
     },
   });
 
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true)
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values)
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        form.reset();
+      }
+      else {
+        const errorData = await response.json();
+        console.error('送信エラー:', errorData);
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('ネットワークエラー:', error);
+      setSubmitStatus('error');
+    }
+    finally {
+      setIsSubmitting(false);
+    }
+
+  }
+
   return (
     <div className="max-w-xl mx-auto px-4 py-10 space-y-6 text-white">
       <h1 className="text-3xl font-bold">Contact</h1>
@@ -38,22 +74,27 @@ export default function ContactPage() {
 
       <div className="flex flex-row items-center justify-center mx-auto gap-4 mt-6">
         <Form {...form}>
-          <form className="flex flex-col items-center mt-12">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col items-center mt-12"
+          >
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="mt-2.5">
                   <FormLabel>名前</FormLabel>
                   <FormControl className="mb-3.5">
                     <Input
                       className="w-84 bg-black"
-                      type="name"
+                      type="text"
                       placeholder="必須"
+                      required
+                      disabled={isSubmitting}
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-red-500" />
+                  <FormMessage className="text-red-500 -mt-5" />
                 </FormItem>
               )}
             />
@@ -61,17 +102,19 @@ export default function ContactPage() {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="mt-2.5">
                   <FormLabel>mail</FormLabel>
                   <FormControl className="mb-3.5">
                     <Input
                       className="w-84 bg-black"
                       type="email"
                       placeholder="必須"
+                      required
+                      disabled={isSubmitting}
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-red-500" />
+                  <FormMessage className="text-red-500 -mt-5" />
                 </FormItem>
               )}
             />
@@ -79,17 +122,18 @@ export default function ContactPage() {
               control={form.control}
               name="phone"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="mt-2.5">
                   <FormLabel>電話番号</FormLabel>
                   <FormControl className="mb-3.5">
                     <Input
                       className="w-84 bg-black"
                       type="tel"
                       placeholder="任意"
+                      disabled={isSubmitting}
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-red-500" />
+                  <FormMessage className="text-red-500 -mt-5" />
                 </FormItem>
               )}
             />
@@ -97,24 +141,47 @@ export default function ContactPage() {
               control={form.control}
               name="text"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="mt-2.5">
                   <FormLabel>お問い合せ内容</FormLabel>
                   <FormControl className="mb-3.5">
                     <Textarea
                       className="w-84 bg-black"
                       placeholder="100文字まで入力できます"
+                      disabled={isSubmitting}
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="text-red-500" />
+                  <FormMessage className="text-red-500 -mt-5" />
                 </FormItem>
               )}
             />
+
+            {/* 送信状態のフィードバック */}
+            {submitStatus === 'success' && (
+              <div className="text-green-500 bg-blue-900/20 border border-blue-400/20 rounded-lg p-4 text-center">
+                📩 送信完了しました。
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="text-red-400 bg-red-900/20 border border-red-400/20 rounded-lg p-4 text-center">
+                ❌ 送信に失敗しました。もう一度お試しください。
+              </div>
+            )}
+
             <Button
               className="bg-blue-950 hover:bg-blue-900 w-84 mt-2"
               type="submit"
+              disabled={isSubmitting}
             >
-              送信
+              {isSubmitting ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  送信中...
+                </>
+              ) : (
+                '送信'
+              )}
             </Button>
           </form>
         </Form>
