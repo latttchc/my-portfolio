@@ -20,8 +20,10 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -34,45 +36,42 @@ export default function ContactPage() {
   });
 
   useEffect(() => {
-    if (submitStatus === 'success') {
+    if (submitStatus === "success") {
       const timer = setTimeout(() => {
-        setSubmitStatus('idle');
+        setSubmitStatus("idle");
       }, 5000);
       return () => clearTimeout(timer);
     }
   }, [submitStatus]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setIsSubmitting(true)
-    setSubmitStatus('idle');
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       });
 
       if (response.ok) {
-        setSubmitStatus('success');
+        setSubmitStatus("success");
         form.reset();
-      }
-      else {
+      } else {
         const errorData = await response.json();
-        console.error('送信エラー:', errorData);
-        setSubmitStatus('error');
+        console.error("送信エラー:", errorData);
+        setSubmitStatus("error");
       }
     } catch (error) {
-      console.error('ネットワークエラー:', error);
-      setSubmitStatus('error');
-    }
-    finally {
+      console.error("ネットワークエラー:", error);
+      setSubmitStatus("error");
+    } finally {
       setIsSubmitting(false);
     }
-
-  }
+  };
 
   return (
     <div className="max-w-xl mx-auto px-4 py-10 space-y-6 text-white">
@@ -166,13 +165,13 @@ export default function ContactPage() {
             />
 
             {/* 送信状態のフィードバック */}
-            {submitStatus === 'success' && (
+            {submitStatus === "success" && (
               <div className="text-green-500 bg-blue-900/20 border border-blue-400/20 rounded-lg p-4 text-center">
                 📩 送信完了しました。
               </div>
             )}
 
-            {submitStatus === 'error' && (
+            {submitStatus === "error" && (
               <div className="text-red-400 bg-red-900/20 border border-red-400/20 rounded-lg p-4 text-center">
                 ❌ 送信に失敗しました。もう一度お試しください。
               </div>
@@ -189,7 +188,7 @@ export default function ContactPage() {
                   送信中...
                 </>
               ) : (
-                '送信'
+                "送信"
               )}
             </Button>
           </form>
