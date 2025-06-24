@@ -17,3 +17,5 @@ export const formSchema = z.object({
     .min(5, "5文字以上入力してください")
     .max(150, "150文字以内でお願いします"),
 });
+
+export type FormType = z.infer<typeof formSchema>;
