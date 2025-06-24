@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,42 +35,39 @@ export default function ContactPage() {
     },
   });
 
-  useEffect(() => {
-    if (submitStatus === "success") {
-      const timer = setTimeout(() => {
-        setSubmitStatus("idle");
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [submitStatus]);
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
-    setSubmitStatus("idle");
+    setSubmitStatus('idle');
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
+      const response = await fetch('/api/contact', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(values)
       });
 
+      const result = await response.json();
+
       if (response.ok) {
-        setSubmitStatus("success");
+        setSubmitStatus('success');
         form.reset();
       } else {
-        const errorData = await response.json();
-        console.error("送信エラー:", errorData);
-        setSubmitStatus("error");
+        throw new Error(result.error || 'メール送信に失敗しました');
       }
+
     } catch (error) {
-      console.error("ネットワークエラー:", error);
-      setSubmitStatus("error");
+      console.error('送信エラー:', error);
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
+
+    // 5秒後にメッセージを自動削除
+    setTimeout(() => {
+      setSubmitStatus('idle');
+    }, 5000);
   };
 
   return (
