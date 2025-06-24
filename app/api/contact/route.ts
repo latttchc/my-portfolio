@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { formSchema } from '@/server/schemas';
+import { ContactEmailTemplate, getContactEmailText } from '@/components/EmailTemplate';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -34,74 +34,24 @@ export async function POST(request: NextRequest) {
             to: toEmail,
             replyTo: email,
             subject: `[ポートフォリオ] ${name}様からお問い合わせ`,
-            html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
-            📧 新しいお問い合わせ
-          </h2>
-          
-          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <div style="margin-bottom: 15px;">
-              <strong style="color: #495057;">👤 お名前:</strong>
-              <p style="margin: 5px 0; color: #212529;">${name}</p>
-            </div>
-            
-            <div style="margin-bottom: 15px;">
-              <strong style="color: #495057;">📧 メールアドレス:</strong>
-              <p style="margin: 5px 0; color: #212529;">
-                <a href="mailto:${email}" style="color: #007bff; text-decoration: none;">${email}</a>
-              </p>
-            </div>
-            
-            ${phone ? `
-            <div style="margin-bottom: 15px;">
-              <strong style="color: #495057;">📞 電話番号:</strong>
-              <p style="margin: 5px 0; color: #212529;">${phone}</p>
-            </div>
-            ` : ''}
-            
-            <div style="margin-bottom: 15px;">
-              <strong style="color: #495057;">💬 お問い合わせ内容:</strong>
-              <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #007bff; margin-top: 10px;">
-                <p style="margin: 0; color: #212529; line-height: 1.6; white-space: pre-wrap;">${text}</p>
-              </div>
-            </div>
-          </div>
-          
-          <div style="text-align: center; margin-top: 20px; color: #6c757d; font-size: 12px;">
-            <p>📅 送信日時: ${new Date().toLocaleString('ja-JP', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                timeZone: 'Asia/Tokyo'
-            })}</p>
-          </div>
-        </div>
-      `,
-            text: `
-新しいお問い合わせ
-
-名前: ${name}
-メールアドレス: ${email}
-${phone ? `電話番号: ${phone}` : ''}
-
-お問い合わせ内容:
-${text}
-
-送信日時: ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
-      `,
+            react: await ContactEmailTemplate({
+                name,
+                email,
+                phone: phone,
+                message: text
+            }),
+            text: getContactEmailText({
+                name,
+                email,
+                phone: phone,
+                message: text
+            }),
         });
 
         if (error) {
-            console.error('❌ Resendエラー:', error);
+            console.error('❌ メール送信エラー:', error);
             return NextResponse.json(
-                {
-                    success: false,
-                    error: 'メール送信に失敗しました',
-                    details: error.message
-                },
+                { success: false, error: 'メール送信に失敗しました', details: error.message },
                 { status: 500 }
             );
         }
