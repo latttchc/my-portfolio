@@ -77,7 +77,7 @@ export default function ContactPage() {
         お問い合わせ・ご連絡は以下のフォームからお願いします。
       </p>
 
-      <div className="flex flex-row items-center justify-center mx-auto gap-4 mt-2">
+      <div className="flex flex-row items-center justify-center mx-auto gap-4 -mt-3">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
