@@ -24,10 +24,10 @@ const projects = [
   {
     title: "簡単!!Todoアプリ",
     description:
-      "Supabaseを利用しReact + TypeScriptで作成したシンプルなTodoアプリ。タスクの追加・削除が可能。認証機能も実装。",
+      "Supabaseを利用しReact + TypeScriptで作成したシンプルなTodoアプリ。タスクの追加・削除が可能。認証機能も実装。※現在はアクセスできません",
     stack: ["Next.js", "React", "Supabase", " TypeScript", "Tailwind CSS"],
     github: "https://github.com/latttchc/todo_list",
-    demo: "https://todo-list-welcome.vercel.app/",
+    demo: "",
     image: "/image/todo-list.png",
   },
   {
