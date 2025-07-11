@@ -8,27 +8,54 @@ import StarBackground from "@/components/StarBackground";
 import WavyText from "@/components/WavyText";
 
 export default function Home() {
-  const [showMessage, setShowMessage] = useState(false);
   const [typedText, setTypedText] = useState("");
+  const [startTyping, setStartTyping] = useState(false);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  const fullText =
-    "ようこそ！僕の洗練されたポートフォリオへ! \n Menuからページを選んでください。";
+  const texts = [
+    "ようこそ！僕の洗練されたポートフォリオへ! \n Menuからページを選んでください。",
+    "About meで自分のことを紹介しています!!",
+    "Projectsでは過去に作成したものが見れます!!",
+    "Contactでお問い合わせください",
+  ];
+
+  const currentText = texts[currentTextIndex];
 
   useEffect(() => {
-    if (showMessage && typedText.length < fullText.length) {
+    const DELAY_MS = 1000;
+
+    const startDelay = setTimeout(() => {
+      setStartTyping(true);
+    }, DELAY_MS);
+    return () => clearTimeout(startDelay);
+  }, []);
+
+  useEffect(() => {
+    if (startTyping && typedText.length < currentText.length) {
       const timeout = setTimeout(() => {
-        setTypedText(fullText.slice(0, typedText.length + 1));
+        setTypedText(currentText.slice(0, typedText.length + 1));
       }, 100); // タイピング速度
 
       return () => clearTimeout(timeout);
     }
-  }, [showMessage, typedText]);
+  }, [typedText, startTyping, currentText]);
+
+  const handleButtonClick = () => {
+    const nextIndex = (currentTextIndex + 1) % texts.length;
+    setCurrentTextIndex(nextIndex);
+    setTypedText("");
+    setStartTyping(false);
+
+    setTimeout(() => {
+      setStartTyping(true);
+    }, 200);
+  };
 
   return (
     <main className="relative flex flex-col items-center justify-center min-h-screen">
       <StarBackground />
       {/* ようこそメッセージ */}
-      {showMessage && (
+      {
         <motion.div
           className="absolute top-1/16 z-20 text-3xl font-bold text-white drop-shadow"
           initial={{ opacity: 0, y: -20 }}
@@ -41,7 +68,7 @@ export default function Home() {
             </span>
           ))}
         </motion.div>
-      )}
+      }
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -59,10 +86,7 @@ export default function Home() {
           <Button
             className="px-6 py-3 text-lg font-semibold text-black bg-white rounded-lg shadow-md hover:bg-blue-600 transition duration-200"
             variant="default"
-            onClick={() => {
-              setShowMessage(true);
-              setTypedText(""); // リセットしてから開始
-            }}
+            onClick={handleButtonClick}
           >
             PUSH ME!!🙄
           </Button>
