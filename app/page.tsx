@@ -16,8 +16,8 @@ export default function Home() {
     "ようこそ！僕の洗練されたポートフォリオへ! \n Menuからページを選んでください。",
     "About meで自分のことを紹介しています!!",
     "Projectsでは過去に作成したものが見れます!!",
-    "Contactでお問い合わせください"
-  ]
+    "Contactでお問い合わせください",
+  ];
 
   const currentText = texts[currentTextIndex];
 
@@ -55,7 +55,7 @@ export default function Home() {
     <main className="relative flex flex-col items-center justify-center min-h-screen">
       <StarBackground />
       {/* ようこそメッセージ */}
-      {(
+      {
         <motion.div
           className="absolute top-1/16 z-20 text-3xl font-bold text-white drop-shadow"
           initial={{ opacity: 0, y: -20 }}
@@ -68,7 +68,7 @@ export default function Home() {
             </span>
           ))}
         </motion.div>
-      )}
+      }
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
